@@ -41,3 +41,4 @@ gem 'spring',        group: :development
 gem 'wombat'
 gem 'inherited_resources'
 gem 'active_model_serializers'
+gem 'kaminari'

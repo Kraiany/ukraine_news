@@ -14,4 +14,7 @@ namespace :scrape do
       crawler.crawl
     end
   end
+
+  desc "Runs scraper"
+  task :all => ["scrape:list", "scrape:article"]
 end

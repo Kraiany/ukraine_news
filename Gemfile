@@ -39,3 +39,5 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'wombat'
+gem 'inherited_resources'
+gem 'active_model_serializers'

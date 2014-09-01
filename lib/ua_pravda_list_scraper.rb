@@ -10,4 +10,20 @@ class UaPravdaListScaper
         title 'xpath=./a'
      end
   end
+
+  def crawl
+    @result = super
+    process_result
+  end
+
+  def process_result
+    @result['day'].each do |day|
+      day['news'].each do |article|
+        Article.find_or_create_by(relative_url: article['link']) do |a|
+          a.title = article['title']
+          a.list_scraped_at = Time.zone.now
+        end
+      end
+    end
+  end
 end

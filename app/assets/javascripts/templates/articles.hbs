@@ -1,5 +1,9 @@
 articles go here
-{{#each}}
-  {{title}}
-{{/each}}
+<ul class="list-group">
+  {{#each}}
+    <li class="list-group-item">
+      {{title}}
+    </li>
+  {{/each}}
+</ul>
 {{outlet}}

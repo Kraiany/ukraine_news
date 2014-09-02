@@ -1,0 +1,21 @@
+#= require jquery
+#= require handlebars
+#= require ember
+#= require ember-data
+#= require_self
+#= require ukraine_news
+
+# for more details see: http://emberjs.com/guides/application/
+window.UkraineNews = Ember.Namespace.create()
+
+UkraineNews.ApplicationAdapter = DS.ActiveModelAdapter.extend
+  namespace: "/api"
+$ ->
+  if $("#app").length > 0
+    UkraineNews.App = Ember.Application.create UkraineNews,
+      LOG_TRANSITIONS: true
+      LOG_TRANSITIONS_INTERNAL: true
+      LOG_VIEW_LOOKUPS: true
+      LOG_ACTIVE_GENERATION: true
+      LOG_RESOLVER: true
+      rootElement: "#app"

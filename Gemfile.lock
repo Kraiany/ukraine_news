@@ -33,6 +33,10 @@ GEM
       builder
       multi_json
     arel (5.0.1.20140414130214)
+    barber (0.4.2)
+      ember-source
+      execjs
+      handlebars-source
     builder (3.2.2)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -43,8 +47,22 @@ GEM
     coffee-script-source (1.7.1)
     domain_name (0.5.20)
       unf (>= 0.0.5, < 1.0.0)
+    ember-data-source (1.0.0.beta.9)
+      ember-source
+    ember-rails (0.15.0)
+      active_model_serializers
+      barber (>= 0.4.1)
+      ember-data-source (>= 1.0.0.beta.5)
+      ember-source (>= 1.1.0)
+      execjs (>= 1.2)
+      handlebars-source (> 1.0.0)
+      jquery-rails (>= 1.0.17)
+      railties (>= 3.1)
+    ember-source (1.7.0)
+      handlebars-source (~> 1.0)
     erubis (2.7.0)
     execjs (2.2.1)
+    handlebars-source (1.3.0)
     has_scope (0.5.1)
     hike (1.2.3)
     http-cookie (1.0.2)
@@ -166,6 +184,8 @@ DEPENDENCIES
   active_model_serializers
   airbrake
   coffee-rails (~> 4.0.0)
+  ember-rails
+  ember-source (= 1.7.0)
   inherited_resources
   jbuilder (~> 2.0)
   jquery-rails

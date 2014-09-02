@@ -46,3 +46,9 @@ gem 'unicorn'
 gem 'airbrake'
 gem 'ember-rails'
 gem 'ember-source', '1.7.0'
+gem 'haml'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end

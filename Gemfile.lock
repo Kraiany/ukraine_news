@@ -37,7 +37,13 @@ GEM
       ember-source
       execjs
       handlebars-source
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -45,6 +51,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.1)
+    debug_inspector (0.0.2)
     domain_name (0.5.20)
       unf (>= 0.0.5, < 1.0.0)
     ember-data-source (1.0.0.beta.9)
@@ -62,6 +69,8 @@ GEM
       handlebars-source (~> 1.0)
     erubis (2.7.0)
     execjs (2.2.1)
+    haml (4.0.5)
+      tilt
     handlebars-source (1.3.0)
     has_scope (0.5.1)
     hike (1.2.3)
@@ -183,9 +192,12 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   airbrake
+  better_errors
+  binding_of_caller
   coffee-rails (~> 4.0.0)
   ember-rails
   ember-source (= 1.7.0)
+  haml
   inherited_resources
   jbuilder (~> 2.0)
   jquery-rails

@@ -2,7 +2,6 @@ class Api::ArticlesController < Api::BaseController
   actions :all, only: %i[index show]
 
   def index(options={}, &block)
-    puts collection.methods
     options = options.merge( { meta: {
       total_entries: collection.total_count,
       current_page: collection.current_page,

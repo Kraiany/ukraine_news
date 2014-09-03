@@ -1,11 +1,11 @@
 <div class="col-sm-4">
-  <ul class="list-group">
+  <div class="list-group">
     {{#each}}
-      <li class="list-group-item">
-        {{#link-to 'article' this}}{{title}}{{/link-to}}
-      </li>
+      {{#link-to 'article' this class='list-group-item'}}
+        <b>[{{source}}]</b> {{title}}
+      {{/link-to}}
     {{/each}}
-  </ul>
+  </div>
 </div>
 <div class="col-sm-8">
   {{outlet}}

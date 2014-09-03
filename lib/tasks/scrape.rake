@@ -1,4 +1,5 @@
 require 'uk_pravda_list_scraper'
+require 'uk_espreso_list_scraper'
 require 'uk_pravda_article_scraper'
 namespace :scrape do
   desc "Scrape list"

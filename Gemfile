@@ -45,10 +45,6 @@ gem 'airbrake'
 gem 'ember-rails'
 gem 'ember-source', '1.7.0'
 gem 'haml'
-gem 'therubyracer'
-gem 'less-rails'
-gem 'twitter-bootstrap-rails'
-
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

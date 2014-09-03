@@ -4,6 +4,7 @@ require 'article_scraper'
 require 'uk_pravda_list_scraper'
 require 'uk_espreso_list_scraper'
 require 'uk_pravda_article_scraper'
+require 'uk_espreso_article_scraper'
 namespace :scrape do
   desc "Scrape list"
   task list: [:environment] do
@@ -14,7 +15,7 @@ namespace :scrape do
   desc "Scrape article"
   task article: [:environment] do
     crawler = UkPravdaArticleScaper.new
-    %w[pravda].each do |source|
+    %w[pravda espreso].each do |source|
       source.classify.constantize.unscraped.each do |article|
         crawler.article = article
         crawler.crawl

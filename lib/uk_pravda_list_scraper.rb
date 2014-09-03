@@ -1,4 +1,4 @@
-class UaPravdaListScaper
+class UkPravdaListScaper
   include Wombat::Crawler
 
   base_url "http://www.pravda.com.ua"

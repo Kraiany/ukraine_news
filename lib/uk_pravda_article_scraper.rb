@@ -1,4 +1,4 @@
-class UaPravdaArticleScaper
+class UkPravdaArticleScaper
   include Wombat::Crawler
   attr_accessor :article
 

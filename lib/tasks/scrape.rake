@@ -1,14 +1,14 @@
-require 'ua_pravda_list_scraper'
-require 'ua_pravda_article_scraper'
+require 'uk_pravda_list_scraper'
+require 'uk_pravda_article_scraper'
 namespace :scrape do
   desc "Scrape list"
   task list: [:environment] do
-    UaPravdaListScaper.new.crawl
+    UkPravdaListScaper.new.crawl
   end
 
   desc "Scrape article"
   task article: [:environment] do
-    crawler = UaPravdaArticleScaper.new
+    crawler = UkPravdaArticleScaper.new
     Article.unscraped.each do |article|
       crawler.article = article
       crawler.crawl

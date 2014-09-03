@@ -1,9 +1,12 @@
-articles go here
-<ul class="list-group">
-  {{#each}}
-    <li class="list-group-item">
-      <a href="#">{{title}}</a>
-    </li>
-  {{/each}}
-</ul>
-{{outlet}}
+<div class="col-sm-4">
+  <ul class="list-group">
+    {{#each}}
+      <li class="list-group-item">
+        {{#link-to 'article' this}}{{title}}{{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
+<div class="col-sm-8">
+  {{outlet}}
+</div>

@@ -3,3 +3,4 @@ UkraineNews.Article = DS.Model.extend
   canonical_url: DS.attr("string")
   content: DS.attr("string")
   published_at: DS.attr("date")
+  body: Ember.computed.alias 'content'

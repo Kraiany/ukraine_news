@@ -1,0 +1,2 @@
+class Hromadske < Article
+end

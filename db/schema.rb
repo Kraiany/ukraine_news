@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901150415) do
+ActiveRecord::Schema.define(version: 20140903013654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: true do |t|
     t.string   "title"
-    t.string   "article_type"
+    t.string   "type"
     t.string   "relative_url"
     t.text     "content"
     t.string   "state"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140901150415) do
     t.datetime "published_at"
   end
 
-  add_index "articles", ["article_type"], name: "index_articles_on_article_type", using: :btree
   add_index "articles", ["state"], name: "index_articles_on_state", using: :btree
+  add_index "articles", ["type"], name: "index_articles_on_type", using: :btree
 
 end

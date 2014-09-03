@@ -1,0 +1,2 @@
+class Espreso < Article
+end

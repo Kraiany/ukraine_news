@@ -1,0 +1,2 @@
+class Pravda < Article
+end

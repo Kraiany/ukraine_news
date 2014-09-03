@@ -1,5 +1,5 @@
-<div class="col-sm-4">
-  <div class="list-group">
+<div class="col-sm-4" style="height: 100%;">
+  <div class="list-group" style="height: 100%; overflow-y: scroll;">
     {{#each}}
       {{#link-to 'article' this class='list-group-item'}}
         <b>[{{source}}]</b> {{title}}
@@ -7,6 +7,6 @@
     {{/each}}
   </div>
 </div>
-<div class="col-sm-8">
+<div class="col-sm-8" style="height: 100%; overflow: scroll;">
   {{outlet}}
 </div>

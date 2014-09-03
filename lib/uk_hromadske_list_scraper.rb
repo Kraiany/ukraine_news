@@ -16,7 +16,7 @@ class UkHromadskeListScraper < ListScraper
         link = article['link'].gsub 'http://www.hromadske.tv', ''
         article_class.find_or_create_by(relative_url: link) do |a|
           published_at_day = article['published_at'] =~ /вчора/ ? 1 : 0
-          published_at = DateTime.parse(article['published_at']) - published_at_day.days
+          published_at = DateTime.parse(article['published_at']) - published_at_day.days + 2.hours
           a.title = article['title']
           a.list_scraped_at = Time.zone.now
           a.published_at = published_at

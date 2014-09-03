@@ -1,4 +1,4 @@
-class UkPravdaArticleScaper < ArticleScaper
+class UkPravdaArticleScraper < ArticleScraper
   base_url "http://www.pravda.com.ua"
 
   article do

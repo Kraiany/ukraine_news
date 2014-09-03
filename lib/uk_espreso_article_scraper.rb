@@ -1,5 +1,5 @@
 require 'dates_international'
-class UkPravdaArticleScaper < ArticleScaper
+class UkEspresoArticleScraper < ArticleScraper
   base_url "http://espreso.tv"
 
   article do

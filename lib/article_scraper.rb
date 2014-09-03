@@ -1,4 +1,4 @@
-class ArticleScaper
+class ArticleScraper
   include Wombat::Crawler
   attr_accessor :article
 
@@ -17,8 +17,12 @@ class ArticleScaper
   def crawl
     self[:path] = @article.relative_url
     puts "Scraping #{self[:base_url]}#{self[:path]}"
-    @result = super
-    process_result
+    begin
+      @result = super
+      process_result
+    rescue Mechanize::ResponseCodeError => e
+      puts e
+    end
   end
 
   def process_result

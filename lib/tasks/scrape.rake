@@ -8,14 +8,14 @@ require 'uk_espreso_article_scraper'
 namespace :scrape do
   desc "Scrape list"
   task list: [:environment] do
-    UkPravdaListScaper.new.crawl
-    UkEspresoListScaper.new.crawl
+    UkPravdaListScraper.new.crawl
+    UkEspresoListScraper.new.crawl
   end
 
   desc "Scrape article"
   task article: [:environment] do
-    crawler = UkPravdaArticleScaper.new
     %w[pravda espreso].each do |source|
+      crawler = "uk_#{source}_article_scraper".classify.constantize.new
       source.classify.constantize.unscraped.each do |article|
         crawler.article = article
         crawler.crawl

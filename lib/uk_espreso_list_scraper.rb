@@ -1,4 +1,4 @@
-class UkEspresoListScaper < ListScraper
+class UkEspresoListScraper < ListScraper
   base_url "http://espreso.tv"
   path "/news"
 

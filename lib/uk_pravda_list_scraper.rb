@@ -1,4 +1,4 @@
-class UkPravdaListScaper < ListScraper
+class UkPravdaListScraper < ListScraper
   base_url "http://www.pravda.com.ua"
   path "/"
 

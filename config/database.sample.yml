@@ -1,0 +1,29 @@
+development:
+  adapter:  postgresql
+  encoding: unicode
+  host: localhost
+  database: ukraine_news_development
+  pool:     5
+  template: template0
+staging:
+  adapter:  postgresql
+  encoding: unicode
+  host: localhost
+  database: ukraine_news_development
+  pool:     5
+  template: template0
+test:
+  host: localhost
+  adapter:  postgresql
+  encoding: unicode
+  database: ukraine_news_test
+  pool:     5
+  username: yuri
+  template: template0
+production:
+  host: localhost
+  adapter:  postgresql
+  encoding: unicode
+  database: ukraine_news_production
+  pool:     5
+  template: template0

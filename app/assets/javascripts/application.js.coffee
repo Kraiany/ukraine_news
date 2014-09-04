@@ -17,3 +17,5 @@ window.UkraineNews = Ember.Application.create
   LOG_ACTIVE_GENERATION: true
   LOG_RESOLVER: true
   rootElement: "#app"
+
+jQuery.timeago.settings.allowFuture = true

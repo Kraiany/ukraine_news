@@ -28,7 +28,7 @@ class ArticleScraper
   def process_result
     scraped_article = @result["article"]
     @article.content = scraped_article["content"].encode('utf-8')
-    @article.published_at = Time.parse(scraped_article["published_at"]) if scraped_article["published_at"].present?
+    @article.published_at = Time.zone.parse("#{scraped_article["published_at"]} (EEST)") if scraped_article["published_at"].present?
     @article.article_scraped_at = Time.zone.now
     @article.state = 'scraped'
     @article.save

@@ -1,4 +1,24 @@
-<div class="container-fluid" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0;">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {{#link-to 'articles.index' class="navbar-brand"}}
+        Новини
+      {{/link-to}}
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="mailto:contact@dynomatix.com?subject=Ukraine+News">
+            Feedback
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid" style="position: fixed; top: 60px; bottom: 0; left: 0; right: 0;">
   <div class="row" style="height: 100%;">
     {{outlet}}
   </div>

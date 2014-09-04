@@ -2,7 +2,7 @@
   <div class="list-group" style="height: 100%; overflow-y: scroll;">
     {{#each}}
       {{#link-to 'article' this class='list-group-item'}}
-        <b>[{{source}}]</b> {{title}} <small>(<abbr class="timeago"{{bindAttr title="published_at_iso"}}>{{published_at_iso}}</abbr>)</small>
+        <b>[{{source}}]</b> {{title}} <small>(<abbr class="timeago"{{bind-attr title="published_at_iso"}}>{{published_at_iso}}</abbr>)</small>
       {{/link-to}}
     {{/each}}
   </div>

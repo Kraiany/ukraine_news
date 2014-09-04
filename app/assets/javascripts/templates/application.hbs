@@ -15,6 +15,12 @@
           </a>
         </li>
       </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          {{input value=query type="text" class="form-control" placeholder="Пошук"}}
+        </div>
+        <button type="submit" class="btn btn-default" {{action 'search' query}}>Знайти</button>
+      </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -11,7 +11,7 @@ class UkEspresoArticleScraper < ArticleScraper
   def process_result
     scraped_article = @result["article"]
     @article.content = scraped_article["content"].encode('utf-8')
-    published_at_string = "#{scraped_article["published_date"]} #{scraped_article["published_time"]}:00 +0200"
+    published_at_string = "#{scraped_article["published_date"]} #{scraped_article["published_time"]} (EEST)"
     @article.published_at = DateTime.parse_international(published_at_string)
     @article.article_scraped_at = Time.zone.now
     @article.state = 'scraped'

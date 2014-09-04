@@ -15,4 +15,10 @@ class Api::ArticlesController < Api::BaseController
     def collection
       @articles ||= end_of_association_chain.scraped.order('published_at DESC').page(params[:page])
     end
+
+    def default_serializer_options
+      if params[:action] == 'show'
+        {root: false}
+      end
+    end
 end

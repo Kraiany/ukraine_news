@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140908023925) do
+ActiveRecord::Schema.define(version: 20140908024403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140908023925) do
     t.datetime "updated_at"
     t.datetime "published_at"
     t.datetime "next_scrape_at"
+    t.integer  "scrape_with_no_changes_count", default: 0
   end
 
   add_index "articles", ["next_scrape_at"], name: "index_articles_on_next_scrape_at", using: :btree

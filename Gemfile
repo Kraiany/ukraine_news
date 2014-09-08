@@ -46,6 +46,7 @@ gem 'ember-rails'
 gem 'ember-source', '1.7.0'
 gem 'haml'
 gem 'ransack'
+gem 'paper_trail'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

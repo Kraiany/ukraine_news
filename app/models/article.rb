@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  has_paper_trail :except => [:create], :ignore => %i[state updated_at next_scrape_at scrape_with_no_changes_count content_change_count]
+  has_paper_trail :except => [:create], :ignore => %i[state article_scraped_at updated_at next_scrape_at scrape_with_no_changes_count content_change_count]
   before_save { state ||= 'unscraped' }
   scope :unscraped, -> { where(state: 'unscraped') }
   scope :scraped, -> { where(state: 'scraped') }

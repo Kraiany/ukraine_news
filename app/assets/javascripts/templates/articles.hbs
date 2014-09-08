@@ -1,4 +1,4 @@
-<div class="col-sm-4" style="height: 100%;">
+<div style="height: 100%;" {{bind-attr class=":col-sm-4 view.articleIsShown:hidden-xs"}}>
   <div class="list-group" style="height: 100%; overflow-y: scroll;">
     {{#each}}
       {{#link-to 'article' this class='list-group-item'}}
@@ -7,6 +7,6 @@
     {{/each}}
   </div>
 </div>
-<div class="col-sm-8" style="height: 100%; overflow: scroll;">
+<div style="height: 100%; overflow: scroll;" {{bind-attr class=":col-sm-8 view.articleIsShown:col-xs-12"}}>
   {{outlet}}
 </div>

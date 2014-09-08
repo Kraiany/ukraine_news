@@ -5,4 +5,11 @@ class Article < ActiveRecord::Base
   scope :scraped, -> { where(state: 'scraped') }
   after_initialize { self.next_scrape_at ||= 10.minutes.from_now }
   after_initialize { self.scrape_with_no_changes_count ||= 0 }
+  before_save :mark_content_changes
+
+  private
+    def mark_content_changes
+      self.scrape_with_no_changes_count = content_changed? ? 0 : (scrape_with_no_changes_count + 1)
+      self.next_scrape_at = NextScrapeValue.new(scrape_with_no_changes_count).next_scrape_at
+    end
 end

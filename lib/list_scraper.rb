@@ -1,5 +1,12 @@
 class ListScraper
   include Wombat::Crawler
+
+  def initialize(base_url, path)
+    super()
+    self[:base_url] = base_url
+    self[:path] = path
+  end
+
   def crawl
     @result = super
     process_result
@@ -25,7 +32,6 @@ class ListScraper
         article_class.find_or_create_by(relative_url: article['link']) do |a|
           a.title = article['title']
           a.list_scraped_at = Time.zone.now
-          a.state = 'unscraped'
         end
       end
     end

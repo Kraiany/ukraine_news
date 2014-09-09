@@ -1,7 +1,4 @@
 class UkHromadskeListScraper < ListScraper
-  base_url "http://www.hromadske.tv"
-  path "/ajax/type_newsline/action_allline/"
-
   day "css=ul", :iterator do
      news "css=li", :iterator do
         link 'xpath=.//a/@href'

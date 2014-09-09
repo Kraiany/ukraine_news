@@ -10,33 +10,23 @@ require 'uk_hromadske_article_scraper'
 namespace :scrape do
   desc "Scrape list"
   task list: [:environment] do
-    UkPravdaListScraper.new.crawl
-    UkEspresoListScraper.new.crawl
-    UkHromadskeListScraper.new.crawl
+    %w[pravda espreso hromadske].each do |source|
+      base_class = source.classify.constantize
+      scraper_class = "uk_#{source}_list_scraper".classify.constantize
+      scraper_class.new(base_class.base_url, base_class.path).crawl
+    end
   end
 
   desc "Scrape article"
   task article: [:environment] do
     %w[pravda espreso hromadske].each do |source|
-      crawler = "uk_#{source}_article_scraper".classify.constantize.new
-      source.classify.constantize.unscraped.each do |article|
-        crawler.article = article
-        crawler.crawl
-      end
-    end
-  end
-
-  desc "Rescrape article for history"
-  task rescrape: [:environment] do
-    %w[pravda espreso hromadske].each do |source|
-      crawler = "uk_#{source}_article_scraper".classify.constantize.new
-      source.classify.constantize.needs_rescraping.each do |article|
-        crawler.article = article
-        crawler.crawl
+      source.classify.constantize.needs_scraping.each do |a|
+        a.crawl
+        a.save
       end
     end
   end
 
   desc "Runs scraper"
-  task :all => ["scrape:list", "scrape:article", "scrape:rescrape"]
+  task :all => ["scrape:list", "scrape:article"]
 end

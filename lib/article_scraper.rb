@@ -1,36 +1,30 @@
 class ArticleScraper
   include Wombat::Crawler
-  attr_accessor :article
-
-  def article_class
-    @article_class ||= begin
-      name.underscore.split('_')[1].classify.constantize
-    end
-  end
-
-  def language
-    @language ||= begin
-      name.underscore.split('_').first
-    end
+  def initialize(base_url, path)
+    super()
+    self[:base_url] = base_url
+    self[:path] = path
   end
 
   def crawl
-    self[:path] = @article.relative_url
     puts "Scraping #{self[:base_url]}#{self[:path]}"
     begin
       @result = super
-      process_result
     rescue Mechanize::ResponseCodeError => e
       puts e
+      false
     end
   end
 
-  def process_result
-    scraped_article = @result["article"]
-    @article.content = scraped_article["content"].encode('utf-8')
-    @article.published_at = Time.zone.parse("#{scraped_article["published_at"]} (EEST)") if scraped_article["published_at"].present?
-    @article.article_scraped_at = Time.zone.now
-    @article.state = 'scraped'
-    @article.save
+  def result
+    @result ||= self.crawl
+  end
+
+  def content
+    @content ||= result['content'].try 'encode', 'utf-8'
+  end
+
+  def published_at
+    @published_at ||= Time.zone.parse("#{result['published_at']} (EEST)")
   end
 end

@@ -18,17 +18,7 @@ namespace :scrape do
   desc "Scrape article"
   task article: [:environment] do
     %w[pravda espreso hromadske].each do |source|
-      source.classify.constantize.unscraped.each do |a|
-        a.crawl
-        a.save
-      end
-    end
-  end
-
-  desc "Rescrape article for history"
-  task rescrape: [:environment] do
-    %w[pravda espreso hromadske].each do |source|
-      source.classify.constantize.needs_rescraping.each do |a|
+      source.classify.constantize.needs_scraping.each do |a|
         a.crawl
         a.save
       end
@@ -36,5 +26,5 @@ namespace :scrape do
   end
 
   desc "Runs scraper"
-  task :all => ["scrape:list", "scrape:article", "scrape:rescrape"]
+  task :all => ["scrape:list", "scrape:article"]
 end

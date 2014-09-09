@@ -12,6 +12,7 @@ class ArticleScraper
       @result = super
     rescue Mechanize::ResponseCodeError => e
       puts e
+      false
     end
   end
 

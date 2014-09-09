@@ -10,9 +10,11 @@ require 'uk_hromadske_article_scraper'
 namespace :scrape do
   desc "Scrape list"
   task list: [:environment] do
-    UkPravdaListScraper.new.crawl
-    UkEspresoListScraper.new.crawl
-    UkHromadskeListScraper.new.crawl
+    %w[pravda espreso hromadske].each do |source|
+      base_class = source.classify.constantize
+      scraper_class = "uk_#{source}_list_scraper".classify.constantize
+      scraper_class.new(base_class.base_url, base_class.path).crawl
+    end
   end
 
   desc "Scrape article"

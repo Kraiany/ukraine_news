@@ -9,6 +9,27 @@ class Article < ActiveRecord::Base
   after_initialize { self.content_change_count ||= 0 }
   before_save :mark_content_changes
 
+  def self.base_url
+    raise "Undefined"
+  end
+
+  def crawl
+    if article_scraper.crawl
+      self.content = article_scraper.content if article_scraper.content
+      self.published_at = article_scraper.published_at if article_scraper.published_at
+      self.article_scraped_at = Time.zone.now
+      self.state = 'scraped'
+    end
+  end
+
+  def article_scraper
+    @article_scraper ||= article_scraper_class.new(self.class.base_url, relative_url)
+  end
+
+  def article_scraper_class
+    @article_scraper_class ||= "Uk#{self.class.name}ArticleScraper".constantize
+  end
+
   private
     def mark_content_changes
       if content_changed?

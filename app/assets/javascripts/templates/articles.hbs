@@ -1,5 +1,5 @@
 <div style="height: 100%;" {{bind-attr class=":col-sm-4 view.articleIsShown:hidden-xs"}}>
-  <div class="list-group" style="height: 100%; overflow-y: scroll;">
+  <div class="list-group" style="height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch;">
     {{#each}}
       {{#link-to 'article' this class='list-group-item'}}
         <b>[{{source}}]</b> {{title}} <small>(<abbr class="timeago"{{bind-attr title="published_at_iso"}}>{{published_at_iso}}</abbr>)</small>
@@ -7,6 +7,6 @@
     {{/each}}
   </div>
 </div>
-<div style="height: 100%; overflow: scroll;" {{bind-attr class=":col-sm-8 view.articleIsShown:col-xs-12"}}>
+<div style="height: 100%; overflow: scroll; -webkit-overflow-scrolling: touch;" {{bind-attr class=":col-sm-8 view.articleIsShown:col-xs-12"}}>
   {{outlet}}
 </div>

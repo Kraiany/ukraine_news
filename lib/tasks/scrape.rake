@@ -19,7 +19,7 @@ namespace :scrape do
 
   desc "Scrape article"
   task article: [:environment] do
-    %w[pravda espreso hromadske].each do |source|
+    %w[pravda espreso hromadske unian].each do |source|
       source.classify.constantize.needs_scraping.each do |a|
         a.crawl
         a.save

@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.timeago
+#= require jquery.hotkeys
 #= require 'date_to_iso_string'
 #= require bootstrap.min
 #= require handlebars

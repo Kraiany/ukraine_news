@@ -27,6 +27,13 @@ namespace :scrape do
     end
   end
 
+  desc "Snitch to confirm articles are being scraped"
+  task snitch: [:environment] do
+    Article::SOURCES.each do |source|
+      raise "Not Scraping: #{source}" unless source.classify.constantize.is_scraping?
+    end
+  end
+
   desc "Runs scraper"
   task :all => ["scrape:list", "scrape:article"]
 end

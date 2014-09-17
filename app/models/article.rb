@@ -18,6 +18,11 @@ class Article < ActiveRecord::Base
     '/'
   end
 
+  def self.is_scraping?
+    scrape_check_cutoff_at = (ENV['SCRAPE_CHECK_HOURS'].present? ? ENV['SCRAPE_CHECK_HOURS'].to_i : 36).hours.ago
+    self.scraped.where('article_scraped_at > ?', scrape_check_cutoff_at).any?
+  end
+
   def crawl
     if article_scraper.crawl
       self.content = article_scraper.content if article_scraper.content

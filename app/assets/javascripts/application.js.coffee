@@ -18,5 +18,10 @@ window.UkraineNews = Ember.Application.create
   LOG_ACTIVE_GENERATION: true
   LOG_RESOLVER: true
   rootElement: "#app"
+  ready: ->
+    $('.before_render_content').hide()
 
 jQuery.timeago.settings.allowFuture = true
+
+UkraineNews.Router.reopen
+  location: 'history'

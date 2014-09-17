@@ -20,3 +20,6 @@ window.UkraineNews = Ember.Application.create
   rootElement: "#app"
 
 jQuery.timeago.settings.allowFuture = true
+
+UkraineNews.Router.reopen
+  location: 'history'

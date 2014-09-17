@@ -6,4 +6,4 @@ UkraineNews.Article = DS.Model.extend
   published_at: DS.attr("date")
   body: Ember.computed.alias 'content'
   published_at_iso: Ember.computed 'published_at', ->
-    @get('published_at').toISOString()
+    if @get('published_at') then @get('published_at').toISOString() else ""

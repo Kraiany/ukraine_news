@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  SOURCES = %w[pravda espreso hromadske unian]
   has_paper_trail :except => [:create], :ignore => %i[state article_scraped_at updated_at next_scrape_at scrape_with_no_changes_count content_change_count scrape_failed_count]
   before_save { state ||= 'unscraped' }
   scope :unscraped, -> { where(state: 'unscraped') }

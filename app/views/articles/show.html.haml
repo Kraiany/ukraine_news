@@ -1,4 +1,8 @@
 - if @article
+  - content_for :header do
+    %link{rel: 'canonical', href: @article.canonical_url}
+  - content_for :title do
+    = @article.title
   %article.before_render_content
     %h1= @article.title
     = raw @article.content

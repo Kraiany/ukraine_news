@@ -55,4 +55,8 @@ class Article < ActiveRecord::Base
   def article_scraper_class
     @article_scraper_class ||= "Uk#{self.class.name}ArticleScraper".constantize
   end
+
+  def canonical_url
+    self.class.base_url + relative_url
+  end
 end

@@ -1,0 +1,8 @@
+!!! XML
+%urlset{:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9"}
+  - for article in @articles
+    %url
+      %loc= article_url article
+      %lastmod=article.updated_at.iso8601
+      %changefreq monthly
+      %priority 0.7

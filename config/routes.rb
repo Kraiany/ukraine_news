@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   end
   resources :articles, only: [:show]
 
+  get '/sitemap' => "articles#sitemap", :defaults => { :format => 'json' }
+
   root to: 'home#index'
 end

@@ -25,3 +25,8 @@ jQuery.timeago.settings.allowFuture = true
 
 UkraineNews.Router.reopen
   location: 'history'
+  notifyGoogleAnalytics: (->
+    ga 'send', 'pageview',
+      'page': @get('url'),
+      'title': @get('url')
+  ).on('didTransition')

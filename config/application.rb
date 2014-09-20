@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module UkraineNews
   class Application < Rails::Application
+    config.cache_store = :redis_store, ENV["REDISTOGO_URL"], { expires_in: 90.minutes }
     config.middleware.use Rack::Deflater # Compress with gzip
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

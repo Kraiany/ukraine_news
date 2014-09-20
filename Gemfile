@@ -49,6 +49,7 @@ gem 'ransack'
 gem 'paper_trail'
 gem 'font-awesome-rails'
 gem 'newrelic_rpm'
+gem 'asset_sync'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

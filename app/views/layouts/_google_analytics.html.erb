@@ -6,4 +6,8 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     ga('create', '<%= ENV['GA_TRACKING_ID'] %>', 'auto');
   </script>
+<% else %>
+  <script>
+    var ga = function(){};
+  </script>
 <% end %>

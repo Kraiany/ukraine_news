@@ -1,8 +1,11 @@
-UkraineNews.ApplicationController = Ember.Controller.extend
+UkraineNews.ApplicationController = Ember.Controller.extend Ember.Evented,
   needs: ['articles']
   actions:
     homeButtonClicked: ->
-      @transitionToRoute 'articles.index'
+      if /^\/articles\/index/.test @get('target.url')
+        @trigger 'homeButtonClicked'
+      else
+        @transitionToRoute 'articles.index'
     showNextItem: ->
       @get('controllers.articles').send 'showNextItem'
     showPreviousItem: ->

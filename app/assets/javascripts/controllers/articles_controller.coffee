@@ -1,4 +1,4 @@
-UkraineNews.ArticlesController = Ember.ArrayController.extend
+UkraineNews.ArticlesController = Ember.ArrayController.extend Ember.Evented,
   queryParams: ['q']
   q: null
   currentArticle: null

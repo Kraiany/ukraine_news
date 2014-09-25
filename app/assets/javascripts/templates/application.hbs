@@ -6,9 +6,9 @@
       {{/link-to}}
       <ul class="nav navbar-nav navbar-right">
         <div class="btn-group pull-right" style="padding-right: 35px; padding-top: 5px;">
-          <button class='btn btn-default visible-xs-inline-block' {{action showPreviousItem}}><i class="icon icon-arrow-left"></i></button>
-          {{#link-to 'articles.index' class='btn btn-default visible-xs-inline-block'}}<i class="icon icon-home"></i>{{/link-to}}
-          <button class='btn btn-default visible-xs-inline-block' {{action showNextItem}}><i class="icon icon-arrow-right"></i></button>
+          <button class='btn btn-default visible-xs-inline-block' {{action 'showPreviousItem'}}><i class="icon icon-arrow-left"></i></button>
+          <button class='btn btn-default visible-xs-inline-block' {{action 'homeButtonClicked'}}><i {{bind-attr class=":icon is_showing_index:icon-arrow-up:icon-home"}}></i></button>
+          <button class='btn btn-default visible-xs-inline-block' {{action 'showNextItem'}}><i class="icon icon-arrow-right"></i></button>
         </div>
       </ul>
     </div>

@@ -5,7 +5,7 @@
   <%= render partial: '/layouts/google_analytics' %>
   <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui,user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title><%= content_for?(:title) ? yield(:title) : "Новини" %></title>
   <%- if content_for?(:title) %>
     <%= yield(:header) %>
@@ -18,5 +18,10 @@
 <%= yield %>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<script>
+  if (window.navigator.standalone) {
+    $("meta[name='apple-mobile-web-app-status-bar-style']").remove();
+  }
+</script>
 </body>
 </html>

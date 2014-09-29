@@ -29,10 +29,7 @@ class ListScraper
     @result['day'].each do |day|
       day['news'].each do |article|
         next if article['link'] =~ /^http/
-        article_class.find_or_create_by(relative_url: article['link']) do |a|
-          a.title = article['title']
-          a.list_scraped_at = Time.zone.now
-        end
+        article_class.create(relative_url: article['link'], title: article['title'], list_scraped_at: Time.zone.now)
       end
     end
   end

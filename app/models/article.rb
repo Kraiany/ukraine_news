@@ -9,6 +9,8 @@ class Article < ActiveRecord::Base
   after_initialize { self.scrape_with_no_changes_count ||= 0 }
   after_initialize { self.content_change_count ||= 0 }
   after_initialize { self.state ||= 'unscraped' }
+  before_validation { self.unique_identifier = unique_identifier_string }
+  validates_uniqueness_of :unique_identifier
 
   def self.base_url
     raise "Undefined"
@@ -58,5 +60,9 @@ class Article < ActiveRecord::Base
 
   def canonical_url
     self.class.base_url + relative_url
+  end
+
+  def unique_identifier_string
+    relative_url
   end
 end

@@ -5,8 +5,10 @@
 #= require 'date_to_iso_string'
 #= require bootstrap.min
 #= require handlebars
+#= require hammer.min
 #= require ember
 #= require ember-data
+#= require ember-hammer
 #= require_self
 #= require ukraine_news
 

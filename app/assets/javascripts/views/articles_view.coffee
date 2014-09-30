@@ -17,3 +17,7 @@ UkraineNews.ArticlesView = Ember.View.extend
     /^\/articles\/[0-9]+$/.test @get('controller.target.url')
   homeButtonClickedHandler: ->
     @$(@get('element')).find('> div:first-child div').get(0).scrollTop = 0
+  gestures:
+    tap: (event) ->
+      @$(event.target).click()
+      return false

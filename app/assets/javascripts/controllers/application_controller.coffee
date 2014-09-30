@@ -11,7 +11,3 @@ UkraineNews.ApplicationController = Ember.Controller.extend Ember.Evented,
       @get('controllers.articles').send 'showNextItem'
     showPreviousItem: ->
       @get('controllers.articles').send 'showPreviousItem'
-  gestures:
-    touchEnd: (event) ->
-      @$(event.target).click()
-      return false

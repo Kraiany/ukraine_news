@@ -4,7 +4,7 @@ class UkPravdaArticleScraper < ArticleScraper
 
   def published_at
     @published_at ||= begin
-      short_date = result['published_at'].gsub(/^[[:word:]]+, /, '')
+      short_date = result['published_at'].gsub(/^[^,]+, /, '')
       DateTime.parse_international("#{short_date} (EEST)")
     end
   end

@@ -18,7 +18,7 @@ class Api::ArticlesController < Api::BaseController
 
     def default_serializer_options
       if params[:action] == 'show'
-        {root: false}
+        {root: 'Article'}
       end
     end
 end

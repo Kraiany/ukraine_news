@@ -15,4 +15,8 @@ RSpec.describe UkUnianArticleScraper, :type => :feature do
     # 02.10.2014  | 07:21
     expect(scraper.published_at).to eq Time.new(2014,10,2,7,21,0, "+03:00")
   end
+
+  it "replaces first h2 with p" do
+    expect(scraper.content).to match /^<p>На дебатах ПАРЄ акцент в українському питанні змістився з російської агресії до внутрішніх проблем України./
+  end
 end

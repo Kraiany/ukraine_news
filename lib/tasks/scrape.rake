@@ -20,7 +20,7 @@ namespace :scrape do
   desc "Scrape article"
   task article: [:environment] do
     Article::SOURCES.each do |source|
-      source.classify.constantize.needs_scraping.each do |a|
+      source.classify.constantize.needs_scraping.limit(50).each do |a|
         a.crawl
         a.save
       end

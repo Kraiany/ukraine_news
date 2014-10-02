@@ -14,6 +14,17 @@ require 'shoulda/matchers'
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.hook_into :webmock
+  c.default_cassette_options = {
+    record: ENV.fetch('RECORD'){ :once }.to_sym,
+    match_requests_on: [:method, :path, :body],
+  }
+  c.allow_http_connections_when_no_cassette = true # FIXME!
+  c.ignore_localhost = true
+end
+
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
@@ -41,4 +52,12 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  config.around(:each, type: :feature) do |example|
+    name = example.metadata[:full_description].split(/\s+/, 2).join("/").underscore.gsub(/[^\w\/]+/, "_")
+    # NOTE Fix 'Gem::Package::TooLongFileName: Gem::Package::TooLongFileName'
+    name = name.split('/').map{|s| s[0..93] }.join('/')
+    options = example.metadata.slice(:record, :match_requests_on).except(:example_group)
+    VCR.use_cassette(name, options) { example.call }
+  end
 end

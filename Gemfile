@@ -65,3 +65,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers', require: false
 end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+end

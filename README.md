@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Kraiany/ukraine_news.svg)](https://travis-ci.org/Kraiany/ukraine_news)
+
 ### Setup
 
 1. Confiure database file `cp config/database.sample.yml config/database.yml`

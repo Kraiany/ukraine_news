@@ -19,4 +19,8 @@ RSpec.describe UkUnianArticleScraper, :type => :feature do
   it "replaces first h2 with p" do
     expect(scraper.content).to match /^<p>На дебатах ПАРЄ акцент в українському питанні змістився з російської агресії до внутрішніх проблем України./
   end
+
+  it "gets featured_media" do
+    expect(scraper.featured_media).to eq "http://images.unian.net/photos/2014_01/1391092144-4231-pase.jpg"
+  end
 end

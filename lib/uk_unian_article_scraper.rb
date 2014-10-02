@@ -5,7 +5,7 @@ class UkUnianArticleScraper < ArticleScraper
   def content
     @content ||= begin
       raw_content = result['content'].try('encode', 'utf-8')
-      f = Nokogiri::XML.fragment(raw_content)
+      f = Nokogiri::HTML.fragment(raw_content)
       f.search(".//*[contains(@class, 'read_also')]").remove
       f.to_s
     end

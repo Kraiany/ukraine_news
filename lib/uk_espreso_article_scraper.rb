@@ -10,4 +10,21 @@ class UkEspresoArticleScraper < ArticleScraper
       DateTime.parse_international(published_at_string)
     end
   end
+
+  def content
+    @content ||= begin
+      raw_content = result['content'].try('encode', 'utf-8')
+      f = Nokogiri::HTML.fragment(raw_content)
+      f.search(".//p[contains(@class, 'tags')]").remove
+      f.to_s
+    end
+  end
+
+  def tags
+    @tags ||= begin
+      raw_content = result['content'].try('encode', 'utf-8')
+      f = Nokogiri::HTML.fragment(raw_content)
+      f.search(".//p[contains(@class, 'tags')]/a").map(&:content)
+    end
+  end
 end

@@ -5,6 +5,16 @@
     %meta{property: "og:url", content: article_url(@article)}
     %meta{property: "og:type", content: 'article'}
     %meta{property: "og:locale", content: 'uk_UA'}
+    - if @article.featured_media.present?
+      %meta{property: "og:image", content: @article.featured_media_url}
+      %meta{:content => "summary_large_image", :name => "twitter:card"}/
+      %meta{:content => @article.featured_media_url, :name => "twitter:image:src"}/
+    - else
+      %meta{:content => "summary", :name => "twitter:card"}/
+
+    %meta{:content => @article.title, :name => "twitter:title"}/
+    %meta{:content => "　", :name => "twitter:description"}/
+    %meta{:content => article_url(@article), :name => "twitter:url"}/
   - content_for :title do
     = @article.title
   %article.before_render_content

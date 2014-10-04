@@ -2,6 +2,9 @@
   <div class="list-group articles" style="height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch;">
     {{#each}}
       {{#link-to 'article' this class='list-group-item article'}}
+        {{#if featured_media}}
+          <img {{bind-attr src="featured_media"}} class="img-rounded featured_media" />
+        {{/if}}
         <b>[{{source}}]</b> {{title}} <small>(<abbr class="timeago"{{bind-attr title="published_at_iso"}}>{{published_at_iso}}</abbr>)</small>
       {{/link-to}}
     {{/each}}

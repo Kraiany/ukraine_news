@@ -51,6 +51,11 @@ gem 'font-awesome-rails'
 gem 'newrelic_rpm'
 gem 'asset_sync'
 gem 'redis-rails'
+gem 'carrierwave'
+gem 'rmagick', :require => 'RMagick'
+gem 'fog'
+gem 'carrierwave_direct'
+gem 'figaro'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -66,7 +71,6 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers', require: false
-  gem 'pry-debugger'
 end
 
 group :test do

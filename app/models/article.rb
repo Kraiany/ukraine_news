@@ -11,6 +11,7 @@ class Article < ActiveRecord::Base
   after_initialize { self.state ||= 'unscraped' }
   before_validation { self.unique_identifier = unique_identifier_string }
   validates_uniqueness_of :unique_identifier
+  mount_uploader :featured_media, FeaturedMediaUploader
 
   def self.base_url
     raise "Undefined"
@@ -38,6 +39,9 @@ class Article < ActiveRecord::Base
       self.article_scraped_at = Time.zone.now
       self.scrape_failed_count = 0
       self.next_scrape_at = NextScrapeValue.new(scrape_with_no_changes_count).next_scrape_at
+      if remote_featured_media_url.blank? && article_scraper.featured_media
+        self.remote_featured_media_url = article_scraper.featured_media
+      end
       self.state = 'scraped'
       true
     else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929120958) do
+ActiveRecord::Schema.define(version: 20141004070127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140929120958) do
     t.integer  "content_change_count",         default: 0
     t.integer  "scrape_failed_count",          default: 0
     t.string   "unique_identifier"
+    t.string   "featured_media"
   end
 
   add_index "articles", ["next_scrape_at"], name: "index_articles_on_next_scrape_at", using: :btree

@@ -27,4 +27,14 @@ class ArticleScraper
   def published_at
     @published_at ||= Time.zone.parse("#{result['published_at']} (EEST)")
   end
+
+  def featured_media
+    @featured_media ||= begin
+      raw_content = result['content'].try('encode', 'utf-8')
+      f = Nokogiri::HTML.fragment(raw_content)
+      if src = f.search('.//img').first.try(:[], 'src')
+        src.match(/^http/) ? src : "#{self[:base_url]}#{src}"
+      end
+    end
+  end
 end

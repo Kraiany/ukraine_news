@@ -1,9 +1,10 @@
-UkraineNews.ArticlesView = Ember.View.extend
+UkraineNews.ArticlesView = Ember.View.extend InfiniteScroll.ViewMixin,
   attributeBindings: ["style"]
   style: Ember.computed ->
     'height: 100%;'
   didInsertElement: ->
     @_super()
+    @setupInfiniteScrollListener()
     jQuery("abbr.timeago").timeago()
     Ember.run.scheduleOnce 'afterRender', this, ->
       @$(document).bind 'keydown', 'j', @showNextItemHandler = => @get('controller').send 'showNextItem'
@@ -11,6 +12,7 @@ UkraineNews.ArticlesView = Ember.View.extend
   willInsertElement: ->
     @get('controller').on('homeButtonClicked', this, @homeButtonClickedHandler)
   willDestroyElement: ->
+    @teardownInfiniteScrollListener()
     @$(document).unbind 'keydown', @showNextItemHandler
     @$(document).unbind 'keydown', @showPreviousItemHandler
   articleIsShown: Ember.computed 'controller.target.url', ->

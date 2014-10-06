@@ -7,6 +7,7 @@
 #= require handlebars
 #= require ember
 #= require ember-data
+#= require infinite_scroll
 #= require_self
 #= require ukraine_news
 

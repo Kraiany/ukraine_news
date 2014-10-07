@@ -16,7 +16,7 @@ class UkEspresoArticleScraper < ArticleScraper
     @content ||= begin
       raw_content = result['content'].try('encode', 'utf-8')
       f = Nokogiri::HTML.fragment(raw_content)
-      f.search(".//p[contains(@class, 'tags')]").remove
+      f.search("./p[contains(@class, 'tags')]").remove
       f.to_s
     end
   end
@@ -25,7 +25,7 @@ class UkEspresoArticleScraper < ArticleScraper
     @tags ||= begin
       raw_content = result['content'].try('encode', 'utf-8')
       f = Nokogiri::HTML.fragment(raw_content)
-      f.search(".//p[contains(@class, 'tags')]/a").map(&:content)
+      f.search("./p[contains(@class, 'tags')]/a").map(&:content)
     end
   end
 

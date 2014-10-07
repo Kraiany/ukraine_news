@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: ukraine_news_test
+  username: postgres

@@ -1,7 +1,12 @@
 language: ruby
 rvm:
-  - "2.0.0"
-  - "2.1.3"
+- 2.0.0
+- 2.1.3
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database ukraine_news_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database ukraine_news_test;' -U postgres
+env:
+  global:
+  - secure: zBjRfaUl4BD86YdFwKhnA3aZnlAiqx98TCnbeoXPnTebWekXxO1EvYCYJ3S8ee4YxRR+fHDOaMTFbEJYHUN0MUIb471GZ6PoSckYIvxef0yAdNfCiiYzMWmSzsHjJIukrhJHsgsZ9aKtfo0WVOyX0XwhJR49zXVjuhlxZIgsZN4=
+  - secure: jss8jXp5+i379WpCaJNB/WN8nbB5PXjg76JMO36KtQxbAxqPtkd0xc6yAPrdg2F4NeLZcHPGor5s3770yq/dA61VMGlMnTuvN2dPU3oU0V59ePQqsBvpPHLYMNbs96m86vaaI7qQKsjo7VvPAu2v2+OfI27f68rfW2phel62PpE=
+  - secure: ewiOvBkHAbcv2KwhYnwPGW9XG93Qy7ecr2/A+7BjeUpvBUpRIJ26wv+sIyiU66aOo1uPQavaTFRv+LPOdCBMSMtm1bhdmk51x6M7LJvWAVdM+F5LsVm2KNwFDK0zGp84/P1E84Y/jhzvpA4I3IUkNX4PskQ8cfBdJ1gkw2X6ke0=

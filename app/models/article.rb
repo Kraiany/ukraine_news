@@ -42,7 +42,9 @@ class Article < ActiveRecord::Base
       if remote_featured_media_url.blank? && article_scraper.featured_media
         self.remote_featured_media_url = article_scraper.featured_media
       end
-      twitter_client.update(tweet_content) if article_scraped_at.nil?
+      if can_tweet?
+        self.did_tweet = true if twitter_client.update(tweet_content)
+      end
       self.article_scraped_at = Time.zone.now
       self.state = 'scraped'
       true
@@ -54,6 +56,10 @@ class Article < ActiveRecord::Base
       self.state = 'failed'
       false
     end
+  end
+
+  def can_tweet?
+    !did_tweet && content.present?
   end
 
   def tweet_content

@@ -17,8 +17,9 @@
     %meta{:content => article_url(@article), :name => "twitter:url"}/
   - content_for :title do
     = @article.title
-  %article.before_render_content
-    %h1= @article.title
-    = raw @article.content
-  = link_to '<< Назад', articles_path, class: 'btn btn-default'
+  .before_render_content
+    %article
+      %h1= @article.title
+      = raw @article.content
+    = link_to '<< Назад', articles_path, class: 'btn btn-default'
 #app

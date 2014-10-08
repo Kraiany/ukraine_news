@@ -27,4 +27,11 @@ RSpec.describe UkEspresoArticleScraper, :type => :feature do
       expect(scraper.featured_media).to eq "http://espreso.tv/uploads/article/75709/images/im578x383-40813822.jpg"
     end
   end
+
+  context "with no photo media" do
+    let(:relative_url) { "news/2014/10/08/yaponskoho_plavcya_zlodiya_dyskvalifikuvaly_na_pivtora_roky" }
+    it "returns nil" do
+      expect(scraper.featured_media).to be_nil
+    end
+  end
 end

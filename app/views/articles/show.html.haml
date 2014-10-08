@@ -20,4 +20,5 @@
   %article.before_render_content
     %h1= @article.title
     = raw @article.content
+  = link_to '<< Назад', articles_path, class: 'btn btn-default'
 #app

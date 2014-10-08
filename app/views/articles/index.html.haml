@@ -1,0 +1,6 @@
+.before_render_content
+  %ul.list-group
+    - @articles.each do |article|
+      %li.list-group-item= link_to article.title, article_path(article)
+  = paginate @articles
+#app

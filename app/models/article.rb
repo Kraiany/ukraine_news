@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
   before_save { state ||= 'unscraped' }
   scope :unscraped, -> { where(state: 'unscraped') }
   scope :scraped, -> { where(state: 'scraped') }
+  scope :published, -> { scraped.order(:published_at) }
   scope :needs_scraping, -> { where('articles.next_scrape_at < ? OR articles.next_scrape_at IS NULL', Time.zone.now)}
   after_initialize { self.next_scrape_at ||= Time.zone.now }
   after_initialize { self.scrape_with_no_changes_count ||= 0 }

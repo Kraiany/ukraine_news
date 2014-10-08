@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   namespace :api do
     resources :articles, only: %w[index show], :defaults => { format: 'json' }
   end
-  resources :articles, only: [:show]
+  resources :articles, only: [:show, :index]
 
   get '/sitemap' => "articles#sitemap", :defaults => { :format => 'json' }
 
-  root to: 'home#index'
+  root to: 'articles#index'
 end

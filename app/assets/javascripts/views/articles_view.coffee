@@ -5,11 +5,11 @@ UkraineNews.ArticlesView = Ember.View.extend InfiniteScroll.ViewMixin,
   didInsertElement: ->
     @_super()
     @setupInfiniteScrollListener()
-    jQuery("abbr.timeago").timeago()
     Ember.run.scheduleOnce 'afterRender', this, ->
       @$(document).bind 'keydown', 'j', @showNextItemHandler = => @get('controller').send 'showNextItem'
       @$(document).bind 'keydown', 'k', @showPreviousItemHandler = => @get('controller').send 'showPreviousItem'
   willInsertElement: ->
+    @_super()
     @get('controller').on('homeButtonClicked', this, @homeButtonClickedHandler)
   willDestroyElement: ->
     @teardownInfiniteScrollListener()

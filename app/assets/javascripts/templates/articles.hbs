@@ -1,15 +1,6 @@
 <div style="height: 100%;" {{bind-attr class=":col-sm-4 view.articleIsShown:hidden-xs"}}>
   <div style="height: 100%;" class="inf-scroll-outer-container vertical">
-    <div class="inf-scroll-inner-container list-group articles" style="-webkit-overflow-scrolling: touch;">
-      {{#each}}
-        {{#link-to 'article' this class='list-group-item article'}}
-          {{#if featured_media}}
-            <img {{bind-attr src="featured_media"}} class="img-rounded featured_media" />
-          {{/if}}
-          <b>[{{source}}]</b> {{title}} <small>(<abbr class="timeago"{{bind-attr title="published_at_iso"}}>{{published_at_iso}}</abbr>)</small>
-        {{/link-to}}
-      {{/each}}
-    </div>
+    {{view UkraineNews.ArticlesCollectionView}}
   </div>
 </div>
 <div style="height: 100%; overflow: scroll; -webkit-overflow-scrolling: touch;" {{bind-attr class=":col-sm-8 view.articleIsShown:col-xs-12"}}>

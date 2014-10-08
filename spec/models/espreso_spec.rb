@@ -4,6 +4,7 @@ RSpec.describe Espreso, :type => :model do
   describe '#crawl', type: :feature do
     before do
       allow_any_instance_of(Espreso).to receive(:"remote_featured_media_url=").and_return(true)
+      allow_any_instance_of(Twitter::REST::Client).to receive(:update).and_return(true)
     end
     let(:relative_url) { '/news/2014/10/08/v_donecku_boyovyky_zakhopyly_pryvatne_mebleve_pidpryyemstvo' }
     subject(:article) do

@@ -56,6 +56,7 @@ gem 'rmagick', :require => 'RMagick'
 gem 'fog'
 gem 'carrierwave_direct'
 gem 'figaro'
+gem 'twitter'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

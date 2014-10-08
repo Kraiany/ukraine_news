@@ -7,7 +7,6 @@ class ArticleScraper
   end
 
   def crawl
-    puts "Scraping #{self[:base_url]}#{self[:path]}"
     begin
       @result = super
     rescue Mechanize::ResponseCodeError => e

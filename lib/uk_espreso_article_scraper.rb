@@ -35,7 +35,7 @@ class UkEspresoArticleScraper < ArticleScraper
         raw_content = result['featured_media'].try('encode', 'utf-8')
         f = Nokogiri::HTML.fragment(raw_content)
         if src = f.search('.//img').first.try(:[], 'src').try(:gsub, /^\//, '')
-          "#{self[:base_url]}#{src}"
+          src.match(/^http/) ? src : "#{self[:base_url]}#{src}"
         end
       end || super
     end

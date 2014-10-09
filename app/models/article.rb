@@ -42,9 +42,6 @@ class Article < ActiveRecord::Base
       if remote_featured_media_url.blank? && article_scraper.featured_media
         self.remote_featured_media_url = article_scraper.featured_media
       end
-      if can_tweet?
-        self.did_tweet = true if twitter_client.update(tweet_content)
-      end
       self.article_scraped_at = Time.zone.now
       self.state = 'scraped'
       true
@@ -58,25 +55,8 @@ class Article < ActiveRecord::Base
     end
   end
 
-  def can_tweet?
-    !did_tweet && content.present?
-  end
-
-  def tweet_content
-    "#{title.try(:[], 0..116)} #{Rails.application.routes.url_helpers.article_url(self)}"
-  end
-
   def article_scraper
     @article_scraper ||= article_scraper_class.new(self.class.base_url, relative_url)
-  end
-
-  def twitter_client
-    @client ||= Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV["TWITTER_CONSUMER_KEY"]
-      config.consumer_secret     = ENV["TWITTER_CONSUMER_SECRET"]
-      config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
-      config.access_token_secret = ENV["TWITTER_ACCESS_SECRET"]
-    end
   end
 
   def article_scraper_class

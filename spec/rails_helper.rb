@@ -60,4 +60,6 @@ RSpec.configure do |config|
     options = example.metadata.slice(:record, :match_requests_on).except(:example_group)
     VCR.use_cassette(name, options) { example.call }
   end
+
+  config.include FactoryGirl::Syntax::Methods
 end

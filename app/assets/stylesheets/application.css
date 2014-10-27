@@ -11,6 +11,10 @@
  * file per style scope.
  *
  *= require font-awesome
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
+
+html, body, p, h1, h2, h3, h4, h5, div, span, a {
+  font-family: 'Tenor Sans', sans-serif;
+}

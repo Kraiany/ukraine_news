@@ -7,6 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title><%= content_for?(:title) ? yield(:title) : "Новини" %></title>
+  <link href='http://fonts.googleapis.com/css?family=Tenor+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <%- if content_for?(:title) %>
     <%= yield(:header) %>
   <%- end %>

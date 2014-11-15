@@ -11,3 +11,5 @@ UkraineNews.ApplicationController = Ember.Controller.extend Ember.Evented,
       @get('controllers.articles').send 'showNextItem'
     showPreviousItem: ->
       @get('controllers.articles').send 'showPreviousItem'
+    refreshButtonClicked: ->
+      @get('controllers.articles').send 'getTopPage'

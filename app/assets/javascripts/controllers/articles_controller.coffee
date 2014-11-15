@@ -13,6 +13,7 @@ UkraineNews.ArticlesController = Ember.ArrayController.extend Ember.Evented, Inf
       current_item_index = items.indexOf @get('currentArticle')
       next_item = items[current_item_index - 1]
       @transitionToRoute('article', next_item) if next_item?
+    getTopPage: -> @store.find 'article', {page: 1}
     getMore: ->
       next_page = @get('page') + 1
       @store.find 'article',

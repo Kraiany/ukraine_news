@@ -13,7 +13,7 @@ class Api::ArticlesController < Api::BaseController
   end
   protected
     def collection
-      @articles ||= end_of_association_chain.scraped.order('published_at DESC').page(params[:page]).search(title_cont: params[:q]).result
+      @articles ||= end_of_association_chain.published.page(params[:page]).search(title_cont: params[:q]).result
     end
 
     def default_serializer_options

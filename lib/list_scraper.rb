@@ -14,7 +14,7 @@ class ListScraper
 
   def article_class
     @article_class ||= begin
-      name.underscore.split('_')[1].classify.constantize
+      name.underscore.gsub(/_list_scraper/, '')[3..-1].classify.constantize
     end
   end
 

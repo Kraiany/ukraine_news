@@ -29,6 +29,7 @@ class ListScraper
     @result['day'].each do |day|
       day['news'].each do |article|
         next if article['link'] =~ /^http/
+        puts "Creating #{article['link']}"
         article_class.create(relative_url: article['link'], title: article['title'], list_scraped_at: Time.zone.now)
       end
     end

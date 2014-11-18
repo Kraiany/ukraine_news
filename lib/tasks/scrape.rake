@@ -22,7 +22,8 @@ namespace :scrape do
     Article::SOURCES.each do |source|
       source.classify.constantize.needs_scraping.limit(50).each do |a|
         a.crawl
-        SocialNotifier.new(article: a).notify if a.save
+        a.save
+#        SocialNotifier.new(article: a).notify if a.save
       end
     end
   end

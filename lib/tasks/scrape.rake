@@ -13,7 +13,11 @@ namespace :scrape do
     Article::SOURCES.each do |source|
       base_class = source.classify.constantize
       scraper_class = "uk_#{source}_list_scraper".classify.constantize
-      scraper_class.new(base_class.base_url, base_class.path).crawl
+      begin
+        scraper_class.new(base_class.base_url, base_class.path).crawl
+      rescue Exception => e
+        puts "Error: #{e.message}"
+      end
     end
   end
 
@@ -21,8 +25,12 @@ namespace :scrape do
   task article: [:environment] do
     Article::SOURCES.each do |source|
       source.classify.constantize.needs_scraping.limit(50).each do |a|
-        a.crawl
-        SocialNotifier.new(article: a).notify if a.save
+        begin
+          a.crawl
+          SocialNotifier.new(article: a).notify if a.save
+        rescue Exception => e
+          puts "Error: #{e.message}"
+        end
       end
     end
   end

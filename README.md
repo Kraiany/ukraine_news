@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Kraiany/ukraine_news.svg)](https://travis-ci.org/Kraiany/ukraine_news)
+![Build Status](https://codeship.com/projects/97b3cf70-64bf-0132-41dc-1a1c11ba4c94/status?branch=master)
 
 ### Setup
 

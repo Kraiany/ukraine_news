@@ -7,6 +7,14 @@
   .article:visited
     border-left: 5px solid #ddd
 
+.article_view
+  @media (max-width: 768px)
+    .photo_block
+      width: inherit !important
+      img
+        max-width: 100%
+        height: auto
+
 .inf-scroll-outer-container.vertical
   overflow-y: scroll
   -webkit-overflow-scrolling: touch

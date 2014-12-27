@@ -17,3 +17,7 @@
 1. [Українська правда](http://www.pravda.com.ua/)
 1. [Еспресо](http://espreso.tv/news)
 1. [Громадське](http://www.hromadske.tv/news/)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Kraiany/ukraine_news/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

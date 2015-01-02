@@ -57,6 +57,7 @@ gem 'fog'
 gem 'carrierwave_direct'
 gem 'figaro'
 gem 'twitter'
+gem 'rails-i18n'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

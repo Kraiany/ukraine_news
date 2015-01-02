@@ -18,8 +18,12 @@
   - content_for :title do
     = @article.title
   .before_render_content
-    %article
-      %h1= @article.title
-      = raw @article.content
+    %article(itemscope itemtype="http://schema.org/NewsArticle")
+      %h1{itemprop: "name headline"}= @article.title
+      - if @article.featured_media.present?
+        =link_to 'Image', @article.featured_media_url, itemprop: 'image'
+      %div{itemprop: 'articleBody'}= raw @article.content
+      %p= link_to 'Оригінал', @article.canonical_url, itemprop: "sameAs", target: '_tab'
+      %time{itemprop: "datePublished", datetime: @article.published_at.iso8601}= l @article.published_at
     = link_to '<< Назад', articles_path, class: 'btn btn-default'
 #app

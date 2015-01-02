@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def sitemap
-    @articles = Article.published
+    @articles = Article.published.pluck(:id, :updated_at)
   end
 
   private

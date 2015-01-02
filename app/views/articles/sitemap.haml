@@ -1,8 +1,8 @@
 !!! XML
 %urlset{:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9"}
-  - for article in @articles
+  - @articles.each do |id, updated_at|
     %url
-      %loc= article_url article
-      %lastmod=article.updated_at.iso8601
+      %loc= article_url id
+      %lastmod=updated_at.iso8601
       %changefreq monthly
       %priority 0.7

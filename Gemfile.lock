@@ -46,6 +46,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bower (0.0.2)
     buftok (0.2.0)
     builder (3.2.2)
     carrierwave (0.10.0)
@@ -362,6 +363,7 @@ DEPENDENCIES
   asset_sync
   better_errors
   binding_of_caller
+  bower
   carrierwave
   carrierwave_direct
   coffee-rails (~> 4.0.0)

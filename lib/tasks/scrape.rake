@@ -43,5 +43,5 @@ namespace :scrape do
   end
 
   desc "Runs scraper"
-  task :all => ["scrape:list", "scrape:article"]
+  task :all => ["scrape:list", "scrape:article", 'sitemap:refresh']
 end

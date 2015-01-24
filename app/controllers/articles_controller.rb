@@ -12,10 +12,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def sitemap
-    @articles = Article.published.pluck(:id, :updated_at)
-  end
-
   private
     def prepare_articles
       @articles = Article.published.page(params[:page])

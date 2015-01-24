@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   resources :articles, only: [:show, :index]
 
-  get '/sitemap' => "articles#sitemap", :defaults => { :format => 'json' }
+  get '/sitemap' => redirect("#{ENV['ASSET_URI']}/sitemaps/sitemap.xml.gz"), as: :sitemap
 
   root to: 'articles#index'
 end

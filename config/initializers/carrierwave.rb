@@ -6,4 +6,5 @@ CarrierWave.configure do |config|
   }
   config.fog_directory  = ENV['FOG_DIRECTORY']
   config.asset_host = ENV['ASSET_URI']
+  config.storage = :fog
 end

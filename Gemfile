@@ -65,6 +65,7 @@ group :development do
   gem "spring-commands-rspec"
   gem 'guard-rspec', require: false
   gem 'guard-spring', require: false
+  gem 'quiet_assets'
 end
 
 group :production do

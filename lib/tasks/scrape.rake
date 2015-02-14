@@ -42,6 +42,11 @@ namespace :scrape do
     end
   end
 
+  desc "Runs `Rails.cache.clear`"
+  task clear_rails_cache: [:environment] do
+    Rails.cache.clear
+  end
+
   desc "Runs scraper"
-  task :all => ["scrape:list", "scrape:article", 'sitemap:refresh']
+  task :all => ["scrape:list", "scrape:article", 'sitemap:refresh', 'scrape:clear_rails_cache'] # TODO: clear only specific article cache
 end

@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :prepare_articles, only: [:index]
+  caches_action :show
+  caches_action :index
+
   def index
   end
 

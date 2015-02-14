@@ -1,5 +1,7 @@
 class Api::ArticlesController < Api::BaseController
   actions :all, only: %i[index show]
+  caches_action :show
+  caches_action :index
 
   def index(options={}, &block)
     options = options.merge( { meta: {

@@ -59,12 +59,14 @@ gem 'figaro'
 gem 'twitter'
 gem 'rails-i18n'
 gem 'sitemap_generator'
+gem 'actionpack-action_caching'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem "spring-commands-rspec"
   gem 'guard-rspec', require: false
   gem 'guard-spring', require: false
+  gem 'quiet_assets'
 end
 
 group :production do

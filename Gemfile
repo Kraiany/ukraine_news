@@ -59,6 +59,7 @@ gem 'figaro'
 gem 'twitter'
 gem 'rails-i18n'
 gem 'sitemap_generator'
+gem 'actionpack-action_caching'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

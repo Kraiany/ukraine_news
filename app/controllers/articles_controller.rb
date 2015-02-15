@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :prepare_articles, only: [:index]
   caches_action :show
-  caches_action :index
+  caches_action :index, :cache_path => proc { |c|
+    p = ["articles"]
+    p << params[:page] if params.has_key?(:page)
+    p.join('-')
+  }
 
   def index
   end

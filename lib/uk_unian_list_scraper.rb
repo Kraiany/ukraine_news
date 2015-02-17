@@ -3,12 +3,14 @@ class UkUnianListScraper < ListScraper
      news "css=li", :iterator do
         link 'xpath=.//a/@href'
         title 'css=a'
+        promotion 'css=.advert'
      end
   end
 
   def process_result
     @result['day'].each do |day|
       day['news'].each do |article|
+        next if article['promotion'].present? # Skip ads
         next unless article['link']
         link = article['link'].gsub 'http://www.unian.ua', ''
         next if link =~ /^http/

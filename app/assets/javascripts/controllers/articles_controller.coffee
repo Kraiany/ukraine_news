@@ -16,7 +16,9 @@ UkraineNews.ArticlesController = Ember.ArrayController.extend Ember.Evented, Inf
     getTopPage: -> @store.find 'article', {page: 1}
     getMore: ->
       next_page = @get('page') + 1
-      @store.find 'article',
+      query_options =
         page: next_page
+      query_options['q'] = @get('q') if @get('q')?
+      @store.find 'article', query_options
       .then (data) =>
         @set('page', data.meta.current_page)

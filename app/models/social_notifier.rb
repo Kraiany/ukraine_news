@@ -15,7 +15,10 @@ class SocialNotifier
 
   private
     def tweet
-      twitter_client.update(tweet_content) if can_tweet?
+      if can_tweet?
+        result = twitter_client.update(tweet_content)
+        Rails.logger.info "Tweeted #{result.uri}"
+      end
     end
 
     def tweet_content

@@ -9,13 +9,13 @@ class SocialNotifier
     @article.save!
   end
 
+  def can_tweet?
+    !@article.did_tweet && @article.content.present?
+  end
+
   private
     def tweet
       twitter_client.update(tweet_content) if can_tweet?
-    end
-
-    def can_tweet?
-      !@article.did_tweet && @article.content.present?
     end
 
     def tweet_content

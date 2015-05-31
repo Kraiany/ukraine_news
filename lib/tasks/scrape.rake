@@ -27,7 +27,10 @@ namespace :scrape do
       source.classify.constantize.needs_scraping.limit(50).each do |a|
         begin
           a.crawl
-          SocialNotifier.new(article: a).notify if a.save
+          if a.save
+            notifier = SocialNotifier.new(article: a)
+            notifier.notify if notifier.can_tweet?
+          end
         rescue Exception => e
           puts "Error: #{e.message}"
         end

@@ -5,4 +5,6 @@ UkraineNews.ArticleView = Em.View.extend
   transitionHandler: ->
     return unless @get('element')?
     @get('element').parentNode.scrollTop = 0
+  didInsertElement: ->
+    @$(@get('element')).find(".timeago").timeago()
 

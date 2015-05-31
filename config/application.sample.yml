@@ -1,0 +1,22 @@
+development: &defaults
+  ASSET_SYNC_GZIP_COMPRESSION:  true
+  ASSET_URI:                    http://www.ukrainenews.dev
+  AWS_ACCESS_KEY_ID:            AWS_KEY_ID
+  AWS_SECRET_ACCESS_KEY:        AWS_ACCESS_KEY
+  ERRBIT_HOST:                  error.dynomatix.com
+  ERRBIT_KEY:                   ERRBIT_KEY
+  ERRBIT_PORT:                  80
+  FOG_DIRECTORY:                ukraine-news
+  FOG_PROVIDER:                 AWS
+  GA_TRACKING_ID:               UA-0000000-0
+  RACK_ENV:                     development
+  RAILS_ENV:                    development
+  REDISTOGO_URL:                redis://localhost/
+  SECRET_KEY_BASE:              1089b596511ff3f646fb80c8a5af609466ae7dff615d0e4c409b4508117502f701126d8a3e0a845e48e1a5c09547345591b9ff6864bf2f9891310f710bcf8b6d
+  TWITTER_ACCESS_SECRET:        TWITTER_ACCESS_SECRET
+  TWITTER_ACCESS_TOKEN:         TWITTER_ACCESS_TOKEN
+  TWITTER_CONSUMER_KEY:         TWITTER_CONSUMER_KEY
+  TWITTER_CONSUMER_SECRET:      TWITTER_CONSUMER_SECRET
+  WEB_HOST:                     www.ukrainenews.dev
+test:
+  <<: *defaults

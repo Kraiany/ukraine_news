@@ -16,7 +16,7 @@ namespace :scrape do
       begin
         scraper_class.new(base_class.base_url, base_class.path).crawl
       rescue Exception => e
-        puts "Error: #{e.message}"
+        Rails.logger.error "Error scraping source #{source}: #{e.message}"
       end
     end
   end
@@ -32,7 +32,7 @@ namespace :scrape do
             notifier.notify if notifier.can_tweet?
           end
         rescue Exception => e
-          puts "Error: #{e.message}"
+          Rails.logger.error "Error scraping article #{a.id}: #{e.message}"
         end
       end
     end

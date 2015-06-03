@@ -6,7 +6,7 @@ class FeaturedMediaUploader < CarrierWave::Uploader::Base
   include CarrierWaveDirect::Uploader
   include Sprockets::Rails::Helper
   process :set_content_type
-
+  storage :file if Rails.env.development?
   version :thumb do
     process resize_to_fill: [60, 35]
   end

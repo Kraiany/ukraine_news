@@ -10,7 +10,9 @@ class SocialNotifier
   end
 
   def can_tweet?
-    !@article.did_tweet && @article.content.present?
+    !@article.did_tweet &&
+      Time.current.beginning_of_day < @article.list_scraped_at && # TODO fix tweeting of old news
+      @article.content.present?
   end
 
   private

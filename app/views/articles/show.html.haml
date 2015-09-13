@@ -27,6 +27,17 @@
         %span.entry-date
           = t '.published_at'
           %time{itemprop: "datePublished", datetime: @article.published_at.iso8601}= l @article.published_at
+      :plain
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- UkraineNews.org Article after title -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="#{ENV['ADSENSE_CLIENT']}"
+             data-ad-slot="#{ENV['ADSENSE_SLOT']}"
+             data-ad-format="auto"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       %div{itemprop: 'articleBody'}= raw @article.content
 .sidebar.col-md-4.col-lg-4.col-xl-3
   %aside.widget

@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :prepare_articles, only: [:index]
+  before_action :prepare_articles, only: [:index, :show]
   caches_action :show
   caches_action :index, :cache_path => proc { |c|
     p = ["articles"]
@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
   }
 
   def index
+    @top_articles = Article.published.with_media.limit(5).to_a
   end
 
   def show
@@ -21,6 +22,6 @@ class ArticlesController < ApplicationController
 
   private
     def prepare_articles
-      @articles = Article.published.page(params[:page])
+      @articles = Article.published.page(params[:page]).per(10)
     end
 end

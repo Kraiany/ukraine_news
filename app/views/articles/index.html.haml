@@ -1,6 +1,31 @@
-.before_render_content
-  %ul.list-group
+.col-xs-12= render partial: 'top_articles', locals: { articles: @top_articles } unless params[:page]
+.col-md-8.bg-base.col-lg-7.col-xl-8
+  .ribbon.ribbon-highlight
+    %ol.breadcrumb.ribbon-inner
+      %li
+        %a{:href => "#"} Новини
+  .entries
     - @articles.each do |article|
-      %li.list-group-item= link_to article.title, article_path(article)
+      %article.entry.style-media.media.type-post
+        %figure.media-object.pull-left.entry-thumbnail.hidden-xs
+          %img{:alt => "", "data-src" => article.featured_media.url(:summarize_thumb), "data-src-retina" => article.featured_media.url(:summarize_thumb), :height => "230", :src => image_path("summarize/placeholder.gif"), :width => "230"}/
+          %noscript
+            %img{:alt => "", :src => article.featured_media}
+        .media-body
+          %header.entry-header
+            %h3.entry-title= link_to article.title, article_path(article)
+            .entry-meta
+              %span.entry-date
+                = link_to article_path(article) do
+                  %time.timeago{:datetime => article.published_at.iso8601}= article.published_at
+          %p= '' # TODO: article.description
+          = link_to article_path(article) do
+            Читати
+            %i.icon.icon-long-arrow-right
   = paginate @articles
-#app
+.sidebar.col-md-4.col-lg-5.col-xl-4
+  %aside.widget
+    %h2.widget-title.ribbon
+      %span Social Media
+    .entries.row
+      %article.type-post.style-media-list.media.col-sm-6.col-md-12= render partial: 'fb_page'

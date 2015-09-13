@@ -1,0 +1,19 @@
+%nav#header.header-navbar{:role => "navigation"}
+  .header-navbar-inner.container
+    #brand.navbar-brand
+      = link_to root_path, rel: 'bookmark', class: 'title' do
+        .title Ukraine News
+    /
+      %ul.nav.nav-icons
+        %li
+          %a.btn-icon{"data-toggle" => ".header-navbar-inner", "data-toggle-class" => "search-toggled-in", :href => "#"}
+            %span.search-toggled-out-icon.icon.icon-search
+            %span.search-toggled-in-icon.icon.icon-remove
+      .search-wrapper.js-stoppropagation
+        .search-wrapper-inner
+          %form
+            %input{:placeholder => "search ... ", :type => "text", :value => ""}/
+            %button.btn-icon{:type => "submit"}
+              %span.icon.icon-search
+    %ul.nav.navbar-nav
+      %li= link_to 'Express', express_index_path

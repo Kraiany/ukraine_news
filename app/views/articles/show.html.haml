@@ -1,29 +1,35 @@
-- if @article
-  - content_for :header do
-    %link{rel: 'canonical', href: @article.canonical_url}
-    %meta{property: "og:title", content: @article.title}
-    %meta{property: "og:url", content: article_url(@article)}
-    %meta{property: "og:type", content: 'article'}
-    %meta{property: "og:locale", content: 'uk_UA'}
-    - if @article.featured_media.present?
-      %meta{property: "og:image", content: @article.featured_media_url}
-      %meta{:content => "summary_large_image", :name => "twitter:card"}/
-      %meta{:content => @article.featured_media_url, :name => "twitter:image:src"}/
-    - else
-      %meta{:content => "summary", :name => "twitter:card"}/
+- content_for :header do
+  %link{rel: 'canonical', href: @article.canonical_url}
+  %meta{property: "og:title", content: @article.title}
+  %meta{property: "og:url", content: article_url(@article)}
+  %meta{property: "og:type", content: 'article'}
+  %meta{property: "og:locale", content: 'uk_UA'}
+  - if @article.featured_media.present?
+    %meta{property: "og:image", content: @article.featured_media_url}
+    %meta{:content => "summary_large_image", :name => "twitter:card"}/
+    %meta{:content => @article.featured_media_url, :name => "twitter:image:src"}/
+  - else
+    %meta{:content => "summary", :name => "twitter:card"}/
 
-    %meta{:content => @article.title, :name => "twitter:title"}/
-    %meta{:content => "　", :name => "twitter:description"}/
-    %meta{:content => article_url(@article), :name => "twitter:url"}/
-  - content_for :title do
-    = @article.title
+  %meta{:content => @article.title, :name => "twitter:title"}/
+  %meta{:content => "　", :name => "twitter:description"}/
+  %meta{:content => article_url(@article), :name => "twitter:url"}/
+- content_for :title do
+  = @article.title
+.col-md-8.col-lg-8.col-xl-9
   .before_render_content
-    %article(itemscope itemtype="http://schema.org/NewsArticle")
-      %h1{itemprop: "name headline"}= @article.title
+    %article.style-single.type-post(itemscope itemtype="http://schema.org/NewsArticle")
+      %h1.page-title{itemprop: "name headline"}= @article.title
       - if @article.featured_media.present?
-        =link_to 'Image', @article.featured_media_url, itemprop: 'image'
+        %figure.entry-thumbnail= image_tag @article.featured_media_url, itemprop: 'image', data: {src: @article.featured_media_url}, :style => "opacity: 1;"
+      .entry-meta.indented
+        %span.author= link_to @article.type, @article.canonical_url, itemprop: "sameAs", target: '_tab'
+        %span.entry-date
+          = t '.published_at'
+          %time{itemprop: "datePublished", datetime: @article.published_at.iso8601}= l @article.published_at
       %div{itemprop: 'articleBody'}= raw @article.content
-      %p= link_to 'Оригінал', @article.canonical_url, itemprop: "sameAs", target: '_tab'
-      %time{itemprop: "datePublished", datetime: @article.published_at.iso8601}= l @article.published_at
-    = link_to '<< Назад', articles_path, class: 'btn btn-default'
-#app
+.sidebar.col-md-4.col-lg-4.col-xl-3
+  %aside.widget
+    %h2.widget-title.ribbon
+      = link_to t('.fresh_news'), root_path
+    .entries.row= render partial: 'recently_published', collection: @articles, as: :article

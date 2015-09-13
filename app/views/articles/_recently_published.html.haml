@@ -1,0 +1,9 @@
+%article.type-post.style-media-list.media.col-sm-6.col-md-12
+  - if article.featured_media
+    = image_tag article.featured_media.url(:size_80_80), class: "media-object pull-left"
+  .media-body
+    %h3.entry-title= link_to article.title, article_path(article), rel: 'bookmark'
+    .entry-meta
+      %span.entry-date
+        = t '.published_at'
+        %time{itemprop: "datePublished", datetime: article.published_at.iso8601}= l article.published_at

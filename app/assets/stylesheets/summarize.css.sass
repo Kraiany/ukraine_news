@@ -10,7 +10,25 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap.min
  *= require font-awesome
- *= require summarize
+ *= require summarize/prettyPhoto
+ *= require summarize/_master
+ *= require summarize/base
+ *= require summarize/components
+ *= require summarize/default
  *= require_self
  */
+
+#brand
+  .title
+    color: #f1c40f
+    font-size: 1.4em
+    font-weight: 600
+    padding-top: 7px
+    padding-left: 5px
+    &:hover, &:active
+      text-decoration: none
+    .scrolled &
+      font-size: 1.2em
+      padding-top: 5px

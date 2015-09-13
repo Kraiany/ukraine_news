@@ -1,0 +1,25 @@
+- top_article = articles.shift
+.section.row.entries.bg-primary.section-no-margin-bottom
+  %article.entry.style-grid.style-hero.hero-sm-largest.type-post.col-sm-12.col-md-6.colheight-sm-1.colheight-md-2.colheight-lg-2.colheight-xl-2
+    %header.entry-header
+      %h3.entry-title= link_to top_article.title, article_path(top_article)
+      .entry-meta
+        %span.entry-date
+          = link_to article_path(top_article) do
+            %time.timeago{:datetime => top_article.published_at.iso8601}= top_article.published_at
+    %figure.entry-thumbnail
+      = link_to '', article_path(top_article)
+      %img{:alt => "", "data-src" => top_article.featured_media, "data-src-retina" => top_article.featured_media, :height => "452", :src => image_path("summarize/placeholder.gif"), :width => "680"}
+      %noscript=image_tag top_article.featured_media
+  - articles.each do |article|
+    %article.entry.style-grid.style-hero.type-post.col-md-6.col-lg-3.colheight-sm-1
+      %header.entry-header
+        %h3.entry-title= link_to article.title, article_path(article)
+        .entry-meta
+          %span.entry-date
+            = link_to article_path(article) do
+              %time.timeago{:datetime => article.published_at.iso8601}= article.published_at
+      %figure.entry-thumbnail
+        = link_to '', article_path(article), class: 'overlay overlay-primary'
+        %img{:alt => "", "data-src" => article.featured_media, "data-src-retina" => article.featured_media, :height => "280", :src => image_path("summarize/placeholder.gif"), :width => "480"}
+        %noscript=image_tag top_article.featured_media

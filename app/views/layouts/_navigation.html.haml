@@ -4,9 +4,6 @@
       = link_to root_path, rel: 'bookmark', class: 'title' do
         .title Ukraine News
     /
-      %ul.nav.nav-pages.hidden-xs
-        %li
-          %a{:href => "#"} About
       %ul.nav.nav-icons
         %li
           %a.btn-icon{"data-toggle" => ".header-navbar-inner", "data-toggle-class" => "search-toggled-in", :href => "#"}
@@ -18,3 +15,5 @@
             %input{:placeholder => "search ... ", :type => "text", :value => ""}/
             %button.btn-icon{:type => "submit"}
               %span.icon.icon-search
+    %ul.nav.navbar-nav
+      %li= link_to 'Express', express_index_path

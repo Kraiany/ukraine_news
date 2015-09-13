@@ -1,0 +1,79 @@
+%footer#footer.footer-area
+  .footer-top.container
+    .row
+      .widget.col-xs-12.col-sm-4
+        %h4.widget-title Categories
+        %ul.entries.links.links-2-cols
+          %li
+            %a{:href => "blog.html"} Entertainment
+          %li
+            %a{:href => "blog.html"} Event
+          %li
+            %a{:href => "blog.html"} Technology
+          %li
+            %a{:href => "blog.html"} Social Media
+          %li
+            %a{:href => "blog.html"} Tactical
+          %li
+            %a{:href => "reviews.html"} Notebook
+          %li
+            %a{:href => "reviews.html"} Smartphone
+          %li
+            %a{:href => "reviews.html"} Tablet
+      .clearfix.visible-xs
+      .widget.col-xs-6.col-sm-2
+        %h4.widget-title Information
+        %ul.entries.links.links
+          %li
+            %a{:href => "#"} About
+          %li
+            %a{:href => "#"} Contact
+          %li
+            %a{:href => "#"} Advertise
+          %li
+            %a{:href => "#"} Terms & Conditions
+          %li
+            %a{:href => "#"} Privacy
+      .widget.col-xs-6.col-sm-2
+        %h4.widget-title Follow Us
+        %ul.entries.links
+          %li
+            %a{:href => "blog.html"}
+              %i.icon-facebook-sign.icon-2x
+              Facebook
+          %li
+            %a{:href => "blog.html"}
+              %i.icon-twitter-sign.icon-2x
+              Twitter
+          %li
+            %a{:href => "blog.html"}
+              %i.icon-google-plus-sign.icon-2x
+              Google Plus
+          %li
+            %a{:href => "blog.html"}
+              %i.icon-linkedin-sign.icon-2x
+              Linkedin
+      .clearfix.visible-xs
+      .widget.col-xs-12.col-sm-4
+        %h4.widget-title Subscribe
+        %form.form-horizontal{:role => "form"}
+          .form-group
+            %label.col-lg-2.control-label{:for => "subscribeEmail"} EMAIL
+            .col-lg-10
+              %input#subscribeEmail.form-control{:placeholder => "Your Email", :type => "text"}/
+          .form-group
+            %label.col-lg-2.control-label RSS
+            .col-lg-10
+              %p.form-control-static
+                %a{:href => ""}
+                  %i.icon-rss-sign
+                  Posts
+                %a{:href => ""}
+                  %i.icon-rss-sign
+  .footer-bottom
+    .container.aligncenter
+      %p
+        \©2013 by
+        = succeed "." do
+          %a{:href => "http://coolorize.com"} Coolorize Network
+      %p

@@ -51,5 +51,5 @@ namespace :scrape do
   end
 
   desc "Runs scraper"
-  task :all => ["scrape:list", "scrape:article", 'sitemap:refresh', 'scrape:clear_rails_cache'] # TODO: clear only specific article cache
+  task :all => ["scrape:list", "scrape:article", 'scrape:clear_rails_cache'] # TODO: clear only specific article cache
 end

@@ -508,7 +508,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   active_model_serializers
-  airbrake
+  airbrake (~> 4.0)
   asset_sync
   better_errors
   binding_of_caller

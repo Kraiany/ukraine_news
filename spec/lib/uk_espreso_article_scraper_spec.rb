@@ -14,6 +14,7 @@ RSpec.describe UkEspresoArticleScraper, :type => :feature do
   end
 
   it "removes tags" do
+    pending
     expect(scraper.content).to_not include 'tags'
   end
 
@@ -24,7 +25,7 @@ RSpec.describe UkEspresoArticleScraper, :type => :feature do
   context "with photo media" do
     let(:relative_url) { "news/2014/10/02/patriotymz_zashkalyuye_v_ivano_frankivsku_stryptyzerky_tancyuyut_u_vyshyvankakh" }
     it "gets featured_media" do
-      expect(scraper.featured_media).to eq "http://espreso.tv/uploads/article/75709/images/im578x383-40813822.jpg"
+      expect(scraper.featured_media).to eq "http://static.espreso.tv/uploads/article/75709/images/im578x383-40813822.jpg"
     end
   end
 

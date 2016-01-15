@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/Kraiany/ukraine_news.svg)](https://travis-ci.org/Kraiany/ukraine_news)
 ![Build Status](https://codeship.com/projects/97b3cf70-64bf-0132-41dc-1a1c11ba4c94/status?branch=master)
-[![Coverage
-Status](https://coveralls.io/repos/Kraiany/ukraine_news/badge.svg?branch=coveralls&service=github)](https://coveralls.io/github/Kraiany/ukraine_news?branch=coveralls)
+[![Coverage Status](https://coveralls.io/repos/Kraiany/ukraine_news/badge.svg?branch=master&service=github)](https://coveralls.io/github/Kraiany/ukraine_news?branch=master)
 
 ### Setup
 

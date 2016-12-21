@@ -29,6 +29,7 @@ class Article < ActiveRecord::Base
   end
 
   def crawl
+    # TODO Refactor
     if article_scraper.crawl
       self.content = article_scraper.content if article_scraper.content
       if content_changed?
